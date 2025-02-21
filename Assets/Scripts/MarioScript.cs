@@ -11,6 +11,8 @@ public class MarioScript : MonoBehaviour
     public LayerMask groundMask;
     public AudioClip jumpClip;
     public GameObject fireworkPrefab;
+    public int jumpTimes;
+    public int dbleJump;
 
     private Rigidbody2D rb;
     private SpriteRenderer _rend;
@@ -78,12 +80,19 @@ public class MarioScript : MonoBehaviour
 
         rb.velocity = nVel;
 
+        if (grnd)
+        {
+            dbleJump = jumpTimes; // If mario is grounded always have number of jumps
+        }
 
-        if (_intentionToJump && grnd)
+        if (_intentionToJump && grnd || _intentionToJump && dbleJump > 0) // If mario is grnd or if he tries to jump with more than 0 jumps
         {
             _animator.Play("jumpAnimation");
+            
             AddJumpForce();
+            dbleJump--;     //remove 1 double jump every jump, if double jumps <= 0 u cant double jump anymore and need to be grounded again
         }
+
         _intentionToJump = false;
 
         _animator.SetBool("isGrounded", grnd);

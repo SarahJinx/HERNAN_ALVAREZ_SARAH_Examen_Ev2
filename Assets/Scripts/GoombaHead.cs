@@ -10,6 +10,7 @@ public class GoombaHead : MonoBehaviour
         if (marioScript)
         {
             marioScript.AddJumpForce();
+            marioScript.dbleJump = marioScript.jumpTimes - 1;
             Destroy(gameObject.transform.parent.gameObject); 
         }
     }
