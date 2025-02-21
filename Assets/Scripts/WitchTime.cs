@@ -7,16 +7,15 @@ using UnityEngine.UIElements;
 public class WitchTime : MonoBehaviour
 {
     public AudioClip parrySound;
-    public float currTime = 0;
-    private float audioTime = 5.05f;                 // Time the audio lasts
-
+    private float currTime = -1f;                      // Always starts below 0 so it never starts in slo.Mo
+    private float audioLength = 5.05f;                 // Amount of time the audio lasts
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))       // If right click pressed
         {
-            currTime = audioTime;
+            currTime = audioLength;
             AudioManager.instance.PlayAudio(parrySound, "witchTime");   // Play slow motion sound
         }
         if (currTime > 0)
