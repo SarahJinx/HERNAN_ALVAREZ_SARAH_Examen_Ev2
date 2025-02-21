@@ -8,11 +8,11 @@ public class MarioScript : MonoBehaviour
 {
     public KeyCode rightKey, leftKey, jumpKey;
     public float speed, rayDistance, jumpForce;
+    public int jumpTimes;
+    public int dbleJump;
     public LayerMask groundMask;
     public AudioClip jumpClip;
     public GameObject fireworkPrefab;
-    public int jumpTimes;
-    public int dbleJump;
 
     private Rigidbody2D rb;
     private SpriteRenderer _rend;
