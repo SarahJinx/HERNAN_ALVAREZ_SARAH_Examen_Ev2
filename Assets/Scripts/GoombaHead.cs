@@ -10,7 +10,7 @@ public class GoombaHead : MonoBehaviour
         if (marioScript)
         {
             marioScript.AddJumpForce();
-            marioScript.dbleJump = marioScript.jumpTimes - 1;
+            marioScript.dbleJump = marioScript.jumpTimes - 1; //since mario jumps automatically when killing an enemy, remove 1 jump but give back double jump
             Destroy(gameObject.transform.parent.gameObject); 
         }
     }
